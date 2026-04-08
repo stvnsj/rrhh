@@ -5,6 +5,8 @@ const proyecto_controller = require("../controllers/proyectoController");
 const presupuesto_controller = require("../controllers/presupuestoController");
 const maintenance_controller = require("../controllers/maintenanceController");
 
+const {toggle_activo_controller} = require("../controllers/toggle_activo_controller");
+
 const multer = require('multer')
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -35,8 +37,6 @@ router.route("/proyecto/addEmpleado").post(proyecto_controller.addEmpleado);
 
 /* Upload a presupuesto */
 router.route("/proyecto/presupuesto/upload").post(upload.single("avatar"),presupuesto_controller.upload);
-
-
 
 
 
@@ -74,6 +74,13 @@ router.route("/proyecto/options").get(proyecto_controller.get);
 
 
 router.route("/proyecto/pwdb").get(maintenance_controller.exportJSON);
+
+
+router
+.route("/proyecto/toggle-activo/:empleadoid/:proyectoid")
+.get(toggle_activo_controller);
+
+
 
 
 /*==================================
