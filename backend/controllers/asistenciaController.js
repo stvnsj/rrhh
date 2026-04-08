@@ -447,11 +447,11 @@ exports.exportJSON = async (req, res, next) => {
     const SQL2 = `
         SELECT 
             empleado_id as id, 
-            CONCAT(nombre, " " , apellido_paterno) as name 
+            nombre_completo(empleado_id) as name,
+            activo as active
         FROM proyecto_empleado PE
-        JOIN empleados E
-        ON PE.empleado_id = E.id
-        where proyecto_id = ?`
+        WHERE proyecto_id = ?
+        `
     
     const SQL3 = `
         SELECT 
