@@ -449,7 +449,7 @@ exports.exportJSON = async (req, res, next) => {
             empleado_id as id, 
             nombre_completo(empleado_id) as name,
             activo as active
-        FROM proyecto_empleado PE
+        FROM proyecto_empleado
         WHERE proyecto_id = ?
         `
     
