@@ -1,6 +1,6 @@
 
 const {queryAsync} = require("../services/dbv2")
-
+const asyncHandler = require("../utils/asyncHandler");
 
 exports.toggle_activo_controller = asyncHandler(async (req, res) => {
 
